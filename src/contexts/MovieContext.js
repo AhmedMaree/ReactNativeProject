@@ -95,7 +95,7 @@ export function MovieProvider({
       if (query && query.trim()) {
         data = await apiSearch(query.trim(), page);
       } else {
-        data = await fetchMovieList(filter.endpoint, page);
+        data = await fetchMovieList(filter, page);
       }
       dispatch({
         type: FETCH_SUCCESS,
@@ -130,7 +130,7 @@ export function MovieProvider({
       if (searchQuery.trim()) {
         data = await apiSearch(searchQuery.trim(), nextPage);
       } else {
-        data = await fetchMovieList(selectedFilter.endpoint, nextPage);
+        data = await fetchMovieList(selectedFilter, nextPage);
       }
       dispatch({
         type: FETCH_MORE,
