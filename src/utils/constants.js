@@ -2,32 +2,34 @@ export const TMDB_API_KEY = process.env.EXPO_PUBLIC_TMDB_API_KEY || '9813ce01a72
 export const TMDB_BASE_URL = process.env.EXPO_PUBLIC_TMDB_BASE_URL || 'https://api.themoviedb.org/3';
 export const TMDB_IMAGE_BASE_URL = process.env.EXPO_PUBLIC_TMDB_IMAGE_BASE_URL || 'https://image.tmdb.org/t/p/w500';
 export const TMDB_BACKDROP_BASE_URL = 'https://image.tmdb.org/t/p/w1280';
+export const SHOW_REMOTE_MOVIE_IMAGES = process.env.EXPO_PUBLIC_SHOW_REMOTE_MOVIE_IMAGES === 'true';
 export const ENDPOINTS = {
-  POPULAR: '/movie/popular',
-  TOP_RATED: '/movie/top_rated',
-  UPCOMING: '/movie/upcoming',
-  NOW_PLAYING: '/movie/now_playing',
+  DISCOVER: '/discover/movie',
   SEARCH: '/search/movie',
   DETAILS: '/movie',
   CREDITS: '/movie',
   SIMILAR: '/movie'
 };
+export const ANIME_GENRE_ID = 16;
 export const FILTERS = [{
   key: 'popular',
   label: 'Popular',
-  endpoint: ENDPOINTS.POPULAR
+  sortBy: 'popularity.desc'
 }, {
   key: 'top_rated',
   label: 'Top Rated',
-  endpoint: ENDPOINTS.TOP_RATED
+  sortBy: 'vote_average.desc',
+  minVotes: 100
 }, {
   key: 'upcoming',
   label: 'Upcoming',
-  endpoint: ENDPOINTS.UPCOMING
+  sortBy: 'primary_release_date.asc',
+  releaseFrom: 'today'
 }, {
   key: 'now_playing',
   label: 'Now Playing',
-  endpoint: ENDPOINTS.NOW_PLAYING
+  sortBy: 'primary_release_date.desc',
+  releaseTo: 'today'
 }];
 export const STORAGE_KEYS = {
   THEME: '@movie_explorer:theme',
